@@ -2,7 +2,7 @@
 kotlin = "2.2.20"
 kotlinx-html = "0.12.0"
 ktor = "3.3.1"
-logback = "1.4.14"
+logback = "1.5.13"
 
 [libraries]
 ktor-server-rate-limiting = { module = "io.github.flaxoos:ktor-server-rate-limiting", version = "2.2.1" }
