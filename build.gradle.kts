@@ -12,6 +12,7 @@ application {
 }
 
 dependencies {
+  // Ktor
   implementation(libs.ktor.server.rate.limiting)
   implementation(libs.ktor.server.html.builder)
   implementation(libs.kotlinx.html)
@@ -25,6 +26,11 @@ dependencies {
   implementation(libs.ktor.server.status.pages)
   implementation(libs.ktor.server.netty)
   implementation(libs.logback.classic)
+
+  // Third-party
+  implementation(libs.itertools)
+
+  // Testing
   testImplementation(libs.ktor.server.test.host)
   testImplementation(libs.kotlin.test.junit)
 }

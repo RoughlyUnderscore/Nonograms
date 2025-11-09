@@ -3,6 +3,7 @@ kotlin = "2.2.20"
 kotlinx-html = "0.12.0"
 ktor = "3.3.1"
 logback = "1.5.13"
+itertools = "1.0.2"
 
 [libraries]
 ktor-server-rate-limiting = { module = "io.github.flaxoos:ktor-server-rate-limiting", version = "2.2.1" }
@@ -20,6 +21,8 @@ ktor-server-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor"
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 ktor-server-test-host = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+
+itertools = { module = "com.michael-bull.kotlin-itertools:kotlin-itertools", version.ref = "itertools" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
