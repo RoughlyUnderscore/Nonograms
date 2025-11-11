@@ -1,4 +1,4 @@
-package com.roughlyunderscore.json
+package com.roughlyunderscore.plugins.json
 
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*

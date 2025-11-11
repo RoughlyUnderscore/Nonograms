@@ -1,4 +1,4 @@
-package com.roughlyunderscore.logs
+package com.roughlyunderscore.plugins.logs
 
 import com.codahale.metrics.*
 import io.ktor.server.application.*

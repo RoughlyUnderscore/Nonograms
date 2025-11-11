@@ -1,4 +1,4 @@
-package com.roughlyunderscore.model
+package com.roughlyunderscore.plugins.model
 
 import com.roughlyunderscore.utils.crossOutFilled
 import com.roughlyunderscore.utils.intersectionMethod

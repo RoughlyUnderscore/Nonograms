@@ -1,11 +1,13 @@
 package com.roughlyunderscore.model
 
+import com.roughlyunderscore.plugins.model.Board
+import com.roughlyunderscore.plugins.model.CellState
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-import com.roughlyunderscore.model.CellState.CROSSED as C
-import com.roughlyunderscore.model.CellState.FILLED as F
-import com.roughlyunderscore.model.CellState.EMPTY as E
+import com.roughlyunderscore.plugins.model.CellState.CROSSED as C
+import com.roughlyunderscore.plugins.model.CellState.FILLED as F
+import com.roughlyunderscore.plugins.model.CellState.EMPTY as E
 
 class BoardTest {
   @Test

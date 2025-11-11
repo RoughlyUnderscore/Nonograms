@@ -1,8 +1,8 @@
 package com.roughlyunderscore.utils
 
 import com.github.michaelbull.itertools.product
-import com.roughlyunderscore.model.Cell
-import com.roughlyunderscore.model.CellState
+import com.roughlyunderscore.plugins.model.Cell
+import com.roughlyunderscore.plugins.model.CellState
 import kotlin.math.max
 
 typealias Row = Array<Cell>

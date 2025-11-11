@@ -1,9 +1,9 @@
 package com.roughlyunderscore
 
-import com.roughlyunderscore.admin.configureAdministration
-import com.roughlyunderscore.json.configureSerialization
-import com.roughlyunderscore.logs.configureMonitoring
-import com.roughlyunderscore.routes.configureRouting
+import com.roughlyunderscore.plugins.admin.configureRateLimit
+import com.roughlyunderscore.plugins.json.configureSerialization
+import com.roughlyunderscore.plugins.logs.configureMonitoring
+import com.roughlyunderscore.plugins.routes.configureRouting
 import io.ktor.server.application.*
 import io.ktor.server.netty.EngineMain
 
@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
-  configureAdministration()
+  configureRateLimit()
   configureSerialization()
   configureMonitoring()
   configureRouting()

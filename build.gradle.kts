@@ -29,6 +29,8 @@ dependencies {
 
   // Third-party
   implementation(libs.itertools)
+  implementation(libs.arrow)
+  implementation(libs.arrow.fx.coroutines)
 
   // Testing
   testImplementation(libs.ktor.server.test.host)

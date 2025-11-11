@@ -1,3 +1,3 @@
-package com.roughlyunderscore.model
+package com.roughlyunderscore.plugins.model
 
 enum class CellState { EMPTY, CROSSED, FILLED }

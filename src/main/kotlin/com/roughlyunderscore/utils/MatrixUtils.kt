@@ -1,6 +1,6 @@
 package com.roughlyunderscore.utils
 
-import com.roughlyunderscore.model.Cell
+import com.roughlyunderscore.plugins.model.Cell
 import kotlin.to
 
 fun Array<Array<Cell>>.swapRowsAndColumns(): Array<Array<Cell>> {

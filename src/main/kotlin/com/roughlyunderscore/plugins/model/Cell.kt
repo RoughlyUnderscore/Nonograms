@@ -1,4 +1,4 @@
-package com.roughlyunderscore.model
+package com.roughlyunderscore.plugins.model
 
 class Cell(var state: CellState) {
   constructor() : this(CellState.EMPTY)
