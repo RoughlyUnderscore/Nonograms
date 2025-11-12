@@ -64,6 +64,20 @@ class Board(
   }
 
   /**
+   * Fills a row with crosses at specific positions.
+   * The positions and the row are indexed starting with 1.
+   * Returns itself for a builder-esque pattern.
+   */
+  fun crossesByList(row: Int, value: () -> List<Int>): Board {
+    val crosses = value()
+    for (idx in 0..rows) {
+      if (idx + 1 in crosses) board[row - 1][idx].state = CellState.CROSSED
+    }
+
+    return this
+  }
+
+  /**
    * Iteratively goes through the board, filling in as many cells
    * as possible in this given iteration, until the board is solved
    * or no more cells can be filled deterministically.

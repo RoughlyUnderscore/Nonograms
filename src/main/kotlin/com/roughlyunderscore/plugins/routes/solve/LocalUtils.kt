@@ -1,24 +1,65 @@
 package com.roughlyunderscore.plugins.routes.solve
 
 import arrow.core.Either
-import java.util.regex.Pattern
+import com.roughlyunderscore.plugins.routes.solve.validation.SolveRouteValidator
 
-object Scale {
-  val SCALE_REGEX = Pattern.compile("""(\d+)[x;\-,A-Za-z](\d+)""")!!
+object ScaleValidator : SolveRouteValidator<Pair<Int, Int>> {
+  override fun getValidationRegex() =
+    Regex("""(\d+)[x;\-,A-Za-z](\d+)""")
 
-  enum class Fail(val error: String) {
-    INVALID_SYNTAX("Incorrect syntax for parameter scale")
+  override fun getSplitRegex() =
+    Regex("""[x;\-A-Za-z]""")
+
+  override fun validate(value: String, parameter: String):
+    Either<String, Pair<Int, Int>>
+  {
+    if (!value.matches(getValidationRegex()))
+      return Either.Left("Incorrect syntax for parameter $value")
+
+    return Either.Right(value.split(getSplitRegex(), limit = 2).let { parts ->
+      val width = parts[0].toInt()
+      val height = parts[1].toInt()
+      width to height
+    })
   }
+}
 
-  fun String.validateScale(): Either<Fail, Pair<Int, Int>> {
-    val matcher = SCALE_REGEX.matcher(this)
-    if (matcher.groupCount() != 2) return Either.Left(Fail.INVALID_SYNTAX)
+object RowColumnValidator : SolveRouteValidator<List<List<Int>>> {
+  override fun getValidationRegex() =
+    Regex("""^\d+(?: \d+)*(?:[;,\-]\d+(?: \d+)*)*$""")
 
-    val width = matcher.group(0).toIntOrNull()
-    val height = matcher.group(1).toIntOrNull()
+  override fun getSplitRegex() =
+    Regex("""[;,\-]""")
 
-    if (width == null || height == null) return Either.Left(Fail.INVALID_SYNTAX)
+  override fun validate(value: String, parameter: String):
+    Either<String, List<List<Int>>>
+  {
+    if (!value.matches(getValidationRegex()))
+      return Either.Left("Incorrect syntax for parameter $parameter")
 
-    return Either.Right(width to height)
+    return Either.Right(value.split(getSplitRegex()).map { list ->
+      list.split(" ").map { element -> element.toInt() }
+    })
+  }
+}
+
+object CrossesValidator : SolveRouteValidator<Map<Int, List<Int>>> {
+  override fun getValidationRegex() =
+    Regex("""^\d+,\d+(?: \d+)*(?:;\d+,\d+(?: \d+)*)*$""")
+
+  override fun getSplitRegex() = null
+
+  override fun validate(value: String, parameter: String):
+    Either<String, Map<Int, List<Int>>>
+  {
+    if (!value.matches(getValidationRegex()))
+      return Either.Left("Incorrect syntax for parameter $value")
+
+    return Either.Right(value.split(";").associate { part ->
+      val (rowString, crossesString) = part.split(",", limit = 2)
+      val row = rowString.toInt()
+      val crosses = crossesString.split(" ").map { it.toInt() }
+      row to crosses
+    })
   }
 }
